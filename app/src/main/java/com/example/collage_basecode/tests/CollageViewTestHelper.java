@@ -80,9 +80,6 @@ public abstract class CollageViewTestHelper {
             case 3:
                 runTest3(collageView, context);
                 break;
-            case 4:
-                runTest4(collageView, context);
-                break;
             default:
                 throw new IllegalArgumentException("Test Item selected has no action to perform!");
         }
@@ -291,62 +288,4 @@ public abstract class CollageViewTestHelper {
         updateCollageViewWithRoot(collageView, rootVisualElement);
 
     }
-
-
-    //   TODO add more test cases below, if necessary
-    private static final void runTest4(CollageView collageView, Context context) {
-        Log.d(TAG, "running test 4!");
-        SolidBackDrop rootVisualElement = new SolidBackDrop(0, 0, 2000, 2000, Color.LTGRAY);
-
-        TextVisualElement textVisualElement = new TextVisualElement(300, 80, "Honor", Typeface.DEFAULT, 50f);
-        rootVisualElement.addChild(textVisualElement);
-
-        //字体——“中”
-        RowLayout rowLayout1 = new RowLayout(150, 300, 400, 30);
-        for (int i = 0; i < 20; i++) {
-            rowLayout1.addChild(new SolidBackDrop(0, 0, 30, 30, i % 2 == 1 ? Color.BLUE : Color.YELLOW));
-        }
-        rootVisualElement.addChild(rowLayout1);
-        RowLayout rowLayout2 = new RowLayout(150, 500, 400, 30);
-        for (int i = 0; i < 20; i++) {
-            rowLayout2.addChild(new SolidBackDrop(0, 0, 30, 30, i % 2 == 1 ? Color.RED : Color.GREEN));
-        }
-        rootVisualElement.addChild(rowLayout2);
-        ColumnLayout columnLayout1 = new ColumnLayout(150, 300, 30, 200);
-        for (int i = 0; i < 10; i++) {
-            columnLayout1.addChild(new SolidBackDrop(0, 0, 30, 30, i % 2 == 1 ? Color.TRANSPARENT : Color.GRAY));
-        }
-        rootVisualElement.addChild(columnLayout1);
-        ColumnLayout columnLayout2 = new ColumnLayout(550, 300, 30, 200);
-        for (int i = 0; i < 10; i++) {
-            columnLayout2.addChild(new SolidBackDrop(0, 0, 30, 30, i % 2 == 1 ? Color.GRAY : Color.TRANSPARENT));
-        }
-        rootVisualElement.addChild(columnLayout2);
-        ColumnLayout columnLayout3 = new ColumnLayout(350, 150, 30, 700);
-        for (int i = 0; i < 30; i++) {
-            columnLayout3.addChild(new SolidBackDrop(0, 0, 30, 30, i % 2 == 1 ? Color.YELLOW : Color.GREEN));
-        }
-        rootVisualElement.addChild(columnLayout3);
-
-        //放置图片（压缩）
-        Resources res = context.getApplicationContext().getResources();
-        Bitmap bitmap1 = BitmapFactory.decodeResource(res, R.drawable.img);
-        int width = bitmap1.getWidth();
-        int height = bitmap1.getHeight();
-        int newWidth = 170;
-        int newHeight = 170;
-        float scaleWidth = ((float) newWidth) / width;
-        float scaleHeight = ((float) newHeight) / height;
-        Matrix matrix = new Matrix();
-        matrix.postScale(scaleWidth, scaleHeight);
-        bitmap1 = Bitmap.createBitmap(bitmap1, 0, 0, width, height, matrix, true);
-        IconImage iconImage1 = new IconImage(180, 330, bitmap1);
-        rootVisualElement.addChild(iconImage1);
-
-        IconImage iconImage2 = new IconImage(380, 330, bitmap1);
-        rootVisualElement.addChild(iconImage2);
-
-        updateCollageViewWithRoot(collageView, rootVisualElement);
-    }
-
 }
