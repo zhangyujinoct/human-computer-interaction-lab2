@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.NinePatch;
 import android.graphics.Typeface;
 import android.util.Log;
@@ -43,7 +42,7 @@ public abstract class CollageViewTestHelper {
     private static final int sAPITestNumber = sMenuItemStartIndex;
 
     // TODO Increase if you add tests
-    private static final int sNumTestItems = 4;
+    private static final int sNumTestItems = 3;
 
     /**
      * Runs a test based on the associated menu item passed in
@@ -259,7 +258,7 @@ public abstract class CollageViewTestHelper {
         s.setPosition(-40, -40);
         SolidBackDrop s2 = new SolidBackDrop(0, 0, 100, 100, Color.BLUE);
         rootVisualElement.addChild(s2);
-        SolidBackDrop s3 = new SolidBackDrop(0, 0, 100, 100, Color.RED);
+        SolidBackDrop s3 = new SolidBackDrop(0, 0, 50, 50, Color.GREEN);
         rootVisualElement.addChild(s3);
         rootVisualElement.moveChildLast(s);
         rootVisualElement.removeChild(s3);
